@@ -7,6 +7,7 @@
 - Images
 - HTML
 - CSS
+- Video Explination
 
 **Intro**
 
@@ -18,5 +19,8 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Images**
 There are Seven images inside the project all these photos were provided.
+
+**Video Explination**
+https://drive.google.com/file/d/1xkGSJ72eD6PpOzN1LAPV54Cry-JLU1uY/view?usp=sharing
 
 Coded by Daniel King 2025

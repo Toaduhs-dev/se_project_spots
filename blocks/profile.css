@@ -29,6 +29,13 @@
 
 .profile__about {
   margin: 0;
+  font-family: "Poppins" Arial, Helvetica, sans-serif;
+  color: #212121;
+  opacity: 70%;
+  font-weight: 500;
+  size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
 }
 
 .profile__edit-button {
