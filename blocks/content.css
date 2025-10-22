@@ -1,3 +1,4 @@
 .content {
   padding: 0 20px;
+  /* divider moved to footer to avoid overlapping footer text */
 }

@@ -20,6 +20,11 @@
   font-weight: 500;
   font-size: 32px;
   line-height: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .profile__about {
@@ -27,14 +32,48 @@
 }
 
 .profile__edit-button {
+  background-color: #fcf5e5;
+  border: none;
+  text-align: left;
+  color: #212121;
+  opacity: 70%;
   margin-top: auto;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .profile__add-button {
+  box-sizing: border-box;
+  width: 149px;
+  height: 52px;
+  background-color: #212121;
+  color: #fff;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  border-radius: 8px;
   margin-left: auto;
+  align-self: flex-end;
+  overflow: visible;
+}
+/*AI Solution for making the text centered inside the button*/
+.profile__add-button img,
+.profile__add-button svg {
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
-@media screen and (max-wdith: 627px) {
+@media screen and (max-width: 627px) {
   .profile {
     flex-direction: column;
     max-width: 288px;
@@ -51,9 +90,52 @@
 
   .profile__name {
     font-size: 20px;
+    margin: 0 0 6px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .profile__column {
+    margin: 0 0 20px;
+  }
+  .profile__edit-button {
+    margin-left: 0;
+    align-self: center;
+    display: inline-flex;
+    justify-content: center;
   }
 
   .profile__add-button {
-    margin: 0;
+    margin-left: 0;
+
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  /* Mobile-specific tweaks for the edit button */
+  .profile__edit-button {
+    width: 84px;
+    font-size: 16px;
+    line-height: 16px; /* text height of 16px */
+    margin-top: 8px; /* move the edit button down slightly */
+    padding: 8px 0; /* slightly more vertical padding so icon/text are not clipped */
+    white-space: nowrap; /* keep text on a single line */
+    /* remove overflow:hidden to avoid clipping the icon; keep nowrap so text doesn't wrap */
+    align-items: center; /* vertically center the button content */
+  }
+
+  /* Ensure edit-button icon matches the 16px text size */
+  .profile__edit-button img,
+  .profile__edit-button svg {
+    width: 16px;
+    height: 16px;
+    display: block;
   }
 }

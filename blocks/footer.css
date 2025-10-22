@@ -1,0 +1,40 @@
+.footer {
+  padding: 24px 20px 40px;
+  position: relative;
+}
+
+.footer::before {
+  /* centered divider sized to cards area (1280px) but responsive */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1280px;
+  max-width: calc(100% - 160px); /* allow 80px left/right gutter */
+  height: 1px;
+  background: rgba(33, 33, 33, 0.4);
+}
+
+.footer__content {
+  width: 104px;
+  height: 16px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: #212121;
+  opacity: 1;
+}
+
+@media screen and (max-width: 627px) {
+  .footer__content {
+    width: 100%;
+    max-width: 104px;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+}
