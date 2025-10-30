@@ -24,6 +24,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
@@ -77,7 +78,7 @@
 .profile__add-button svg {
   width: 16px;
   height: 16px;
-  display: block;;
+  display: block;
 }
 
 @media screen and (max-width: 627px) {
@@ -102,6 +103,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
   }
 
