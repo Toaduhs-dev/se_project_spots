@@ -1,0 +1,125 @@
+.modal {
+  visibility: hidden;
+  background-color: #00000080;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_is-opened {
+  visibility: visible;
+}
+
+.modal__container {
+  max-width: 730px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 32px 50px;
+  position: relative;
+  padding: 10px;
+}
+
+.modal__close-button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 32px;
+  right: 50px;
+  background-color: #fff;
+  border: none;
+  background-image: url(../images/Close\ Icon.svg);
+}
+
+.modal__submit-button {
+  width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  padding: 18px 32px;
+  gap: 8px;
+  background-color: rgba(33, 33, 33, 1);
+  color: #fff;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.modal__title {
+  margin: 0 0 32px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 100%;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__label {
+  margin: 0 0 32px;
+}
+
+.modal__input {
+  display: block;
+  margin: 8px 0 0;
+  width: 630px;
+  padding: 16px 12px;
+  border-radius: 8px;
+  border-color: rgba(33, 33, 33, 0.4);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-style: medium;
+  size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  gap: 10px;
+}
+
+.modal__input::placeholder {
+  color: #2121214d;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  color: rgba(33, 33, 33, 0.3);
+}
+
+@media screen and (max-width: 677px) {
+  .modal__container {
+    width: 300px;
+    top: 134px;
+    left: 10px;
+    border-radius: 8px;
+    padding: 12px;
+    gap: 24px;
+  }
+  .modal__title {
+    font-size: 20px;
+  }
+
+  .modal__input {
+    width: 276px;
+    gap: 24px;
+  }
+  .modal__submit-button {
+    width: 276px;
+    border-radius: 8px;
+    padding: 18px 32px;
+    gap: 8px;
+    font-size: 16px;
+  }
+  .modal__input::placeholder {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+  }
+}

@@ -1,19 +1,6 @@
 .footer {
   padding: 24px 20px 40px;
-  position: relative;
-}
-
-.footer::before {
-  /* centered divider sized to cards area (1280px) but responsive */
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1280px;
-  max-width: calc(100% - 160px); /* allow 80px left/right gutter */
-  height: 1px;
-  background: rgba(33, 33, 33, 0.4);
+  border-top: 1px rgba(33, 33, 33, 0.4) solid; /* move divider here */
 }
 
 .footer__content {
