@@ -8,6 +8,7 @@
 - HTML
 - CSS
 - Video Explination
+- Git-Hub Pages
 
 **Intro**
 
@@ -22,5 +23,11 @@ There are Seven images inside the project all these photos were provided.
 
 **Video Explination**
 https://drive.google.com/file/d/1xkGSJ72eD6PpOzN1LAPV54Cry-JLU1uY/view?usp=sharing
+
+A video explination of the Sprint 3 parts as required by the syllabus.
+
+**Git-Hub Pages Link** https://toaduhs-dev.github.io/se_project_spots/
+
+A link to the Git-Hub pages.
 
 Coded by Daniel King 2025
