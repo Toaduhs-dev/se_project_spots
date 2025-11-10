@@ -59,7 +59,9 @@ editProfileCloseButton.addEventListener("click", function () {
   editProfileModal.classList.remove("modal_is-opened");
 });
 
-// Simple: handle edit profile form submit (update DOM only) NOTE: All Comment text is AI fix. I was having problems with the code and it saving the values when trying to edit the name. Had to use AI to fix this but I had it explain it to me.
+// Simple: handle edit profile form submit (update DOM only)
+// NOTE: All Comment text with .trim is an AI fix. I was having problems with the code and it saving the values when trying to edit the name. Had to use AI to fix this but I had it explain it to me.
+// Some of this code was also helped by a tutor.
 if (editProfileModal) {
   const editProfileForm = editProfileModal.querySelector(".modal__form");
   if (editProfileForm) {
@@ -71,7 +73,6 @@ if (editProfileModal) {
       const about = editProfileDescription
         ? editProfileDescription.value.trim()
         : "";
-      // log submitted values (school requirement)
       console.log("Edit Profile submitted:", { name, about });
       if (editProfileNameInput && profileNameEl)
         profileNameEl.textContent = name || profileNameEl.textContent;
@@ -110,7 +111,6 @@ if (newPostModal) {
       evt.preventDefault();
       const link = imageInput.value.trim();
       const name = captionInput.value.trim();
-      // log submitted values (school requirement)
       console.log("New Post submitted:", { name, link });
       if (!link || !name) return; // require both
       const li = document.createElement("li");

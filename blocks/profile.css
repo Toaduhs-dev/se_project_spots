@@ -49,6 +49,7 @@
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .profile__add-button {
@@ -72,6 +73,7 @@
   margin-left: auto;
   align-self: flex-end;
   overflow: visible;
+  cursor: pointer;
 }
 /*AI Solution for making the text centered inside the button*/
 .profile__add-button img,
