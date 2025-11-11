@@ -60,7 +60,8 @@ editProfileCloseButton.addEventListener("click", function () {
 });
 
 // Simple: handle edit profile form submit (update DOM only)
-// NOTE: All Comment text with .trim is an AI fix. I was having problems with the code and it saving the values when trying to edit the name. Had to use AI to fix this but I had it explain it to me.
+// NOTE: All Comment text with ".trim" is an AI fix but all was written by me just reorganized by AI.
+// I was having problems with the code and it saving the values when trying to edit the name. Had to use AI to fix this but I had it explain it to me.
 // Some of this code was also helped by a tutor.
 if (editProfileModal) {
   const editProfileForm = editProfileModal.querySelector(".modal__form");
@@ -88,7 +89,9 @@ if (newPostButton && newPostModal && newPostCloseButton) {
     newPostModal.classList.add("modal_is-opened");
   });
 
-  //Below was and AI fix alongside some of my code. I could not get the New Post Button to function properly and kept getting console errors.//
+  //Below was and AI fix alongside some of my code.
+  // I could not get the New Post Button to function properly and kept getting console errors.
+  // Also lines 117-122 are fully AI generated.
   newPostCloseButton.addEventListener("click", function () {
     newPostModal.classList.remove("modal_is-opened");
   });
@@ -100,7 +103,6 @@ if (newPostButton && newPostModal && newPostCloseButton) {
   });
 }
 
-// Simple: handle new post form submit (add card to DOM only)
 if (newPostModal) {
   const newPostForm = newPostModal.querySelector(".modal__form");
   const imageInput = newPostModal.querySelector("#card-image-input");
