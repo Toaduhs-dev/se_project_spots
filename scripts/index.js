@@ -30,100 +30,63 @@ const initialCards = [
   },
 ];
 
-const editProfileButton = document.querySelector(".profile__edit-button");
+const editProfileBtn = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile-modal");
-const editProfileCloseButton = editProfileModal.querySelector(
+const editProfileCloseBtn = editProfileModal.querySelector(
   ".modal__close-button"
 );
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input"
 );
-const editProfileDescription = editProfileModal.querySelector(
+const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
 
-const newPostButton = document.querySelector(".profile__add-button");
+const newPostBtn = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
-const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
+const newPostCloseBtn = newPostModal.querySelector(".modal__close-button");
+const newPostFormEl = newPostModal.querySelector(".modal__form");
+const newPostNameInput = newPostModal.querySelector("#place-name-input");
+const newPostLinkInput = newPostModal.querySelector("#place-link-input");
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileAboutEl = document.querySelector(".profile__about");
 
-editProfileButton.addEventListener("click", function () {
+editProfileBtn.addEventListener("click", function () {
   editProfileModal.classList.add("modal_is-opened");
   editProfileNameInput.value = profileNameEl.textContent;
-  editProfileDescription.value = profileAboutEl.textContent;
+  editProfileDescriptionInput.value = profileAboutEl.textContent;
 });
 
-editProfileCloseButton.addEventListener("click", function () {
+editProfileCloseBtn.addEventListener("click", function () {
   editProfileModal.classList.remove("modal_is-opened");
 });
 
-// Simple: handle edit profile form submit (update DOM only)
-// NOTE: All Comment text with ".trim" is an AI fix but all was written by me just reorganized by AI.
-// I was having problems with the code and it saving the values when trying to edit the name. Had to use AI to fix this but I had it explain it to me.
-// Some of this code was also helped by a tutor.
-if (editProfileModal) {
-  const editProfileForm = editProfileModal.querySelector(".modal__form");
-  if (editProfileForm) {
-    editProfileForm.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-      const name = editProfileNameInput
-        ? editProfileNameInput.value.trim()
-        : "";
-      const about = editProfileDescription
-        ? editProfileDescription.value.trim()
-        : "";
-      console.log("Edit Profile submitted:", { name, about });
-      if (editProfileNameInput && profileNameEl)
-        profileNameEl.textContent = name || profileNameEl.textContent;
-      if (editProfileDescription && profileAboutEl)
-        profileAboutEl.textContent = about || profileAboutEl.textContent;
-      editProfileModal.classList.remove("modal_is-opened");
-    });
-  }
+newPostBtn.addEventListener("click", function () {
+  newPostModal.classList.add("modal_is-opened");
+});
+
+newPostCloseBtn.addEventListener("click", function () {
+  newPostModal.classList.remove("modal_is-opened");
+});
+
+const editProfileFormEl = editProfileModal.querySelector(".modal__form");
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  profileNameEl.textContent = editProfileNameInput.value;
+  profileAboutEl.textContent = editProfileDescriptionInput.value;
+  editProfileModal.classList.remove("modal_is-opened");
 }
 
-if (newPostButton && newPostModal && newPostCloseButton) {
-  newPostButton.addEventListener("click", function () {
-    newPostModal.classList.add("modal_is-opened");
-  });
-
-  //Below was and AI fix alongside some of my code.
-  // I could not get the New Post Button to function properly and kept getting console errors.
-  // Also lines 117-122 are fully AI generated.
-  newPostCloseButton.addEventListener("click", function () {
-    newPostModal.classList.remove("modal_is-opened");
-  });
-} else {
-  console.warn("New post modal or buttons not found:", {
-    newPostButton,
-    newPostModal,
-    newPostCloseButton,
-  });
+function handleAddCardSubmit(evt) {
+  evt.preventDefault();
+  console.log(newPostNameInput.value);
+  console.log(newPostLinkInput.value);
 }
 
-if (newPostModal) {
-  const newPostForm = newPostModal.querySelector(".modal__form");
-  const imageInput = newPostModal.querySelector("#card-image-input");
-  const captionInput = newPostModal.querySelector("#card-caption-input");
-  const cardsList = document.querySelector(".cards__list");
-  if (newPostForm && imageInput && captionInput && cardsList) {
-    newPostForm.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-      const link = imageInput.value.trim();
-      const name = captionInput.value.trim();
-      console.log("New Post submitted:", { name, link });
-      if (!link || !name) return; // require both
-      const li = document.createElement("li");
-      li.className = "card";
-      li.innerHTML = `\n        <img src="${link}" alt="${name}" class="card__image"/>\n        <div class="card__content">\n          <h2 class="card__title">${name}</h2>\n          <button type="button" class="card__like-button"></button>\n        </div>\n      `;
-      cardsList.insertBefore(li, cardsList.firstChild);
-      newPostForm.reset();
-      newPostModal.classList.remove("modal_is-opened");
-    });
-  }
-}
+editProfileFormEl.addEventListener("submit", handleProfileFormSubmit);
+newPostFormEl.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach(function (card) {
   console.log(card.name);
