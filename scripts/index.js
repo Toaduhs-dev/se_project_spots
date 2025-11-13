@@ -46,28 +46,41 @@ const newPostBtn = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-button");
 const newPostFormEl = newPostModal.querySelector(".modal__form");
-const newPostNameInput = newPostModal.querySelector("#place-name-input");
-const newPostLinkInput = newPostModal.querySelector("#place-link-input");
+const newPostNameInput = newPostModal.querySelector("#card-caption-input");
+const newPostLinkInput = newPostModal.querySelector("#card-image-input");
+let postTitle = "";
+let postImageUrl = "";
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileAboutEl = document.querySelector(".profile__about");
 
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+}
+
 editProfileBtn.addEventListener("click", function () {
-  editProfileModal.classList.add("modal_is-opened");
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileAboutEl.textContent;
+  openModal(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
-  editProfileModal.classList.remove("modal_is-opened");
+  //editProfileModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 });
 
 newPostBtn.addEventListener("click", function () {
-  newPostModal.classList.add("modal_is-opened");
+  //newPostModal.classList.add("modal_is-opened");
+  openModal(newPostModal);
 });
 
 newPostCloseBtn.addEventListener("click", function () {
-  newPostModal.classList.remove("modal_is-opened");
+  //newPostModal.classList.remove("modal_is-opened");
+  closeModal(newPostModal);
 });
 
 const editProfileFormEl = editProfileModal.querySelector(".modal__form");
@@ -79,10 +92,26 @@ function handleProfileFormSubmit(evt) {
   editProfileModal.classList.remove("modal_is-opened");
 }
 
+// Listen for changes in the "name" input
+newPostNameInput.addEventListener("change", (event) => {
+  postTitle = event.target.value.trim();
+  console.log("Post title updated:", postTitle);
+});
+
+// Listen for changes in the "link/image" input
+newPostLinkInput.addEventListener("change", (event) => {
+  postImageUrl = event.target.value.trim();
+  console.log("Post image URL updated:", postImageUrl);
+});
+
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  console.log(newPostNameInput.value);
-  console.log(newPostLinkInput.value);
+  console.log(postTitle);
+  console.log(postImageUrl);
+  initialCards.push({
+    name: postTitle,
+    link: postImageUrl,
+  });
 }
 
 editProfileFormEl.addEventListener("submit", handleProfileFormSubmit);
