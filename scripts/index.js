@@ -48,11 +48,47 @@ const newPostCloseBtn = newPostModal.querySelector(".modal__close-button");
 const newPostFormEl = newPostModal.querySelector(".modal__form");
 const newPostNameInput = newPostModal.querySelector("#card-caption-input");
 const newPostLinkInput = newPostModal.querySelector("#card-image-input");
-let postTitle = "";
-let postImageUrl = "";
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileAboutEl = document.querySelector(".profile__about");
+
+const cardTemplate = document
+  .querySelector("#card-template")
+  .content.querySelector(".card");
+
+const cardsList = document.querySelector(".cards__list");
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardTitleElement = cardElement.querySelector(".card__title");
+  const cardImageElement = cardElement.querySelector(".card__image");
+
+  if (cardImageElement) {
+    cardImageElement.src = data.link;
+    cardImageElement.alt = data.name;
+  }
+
+  if (cardTitleElement) {
+    cardTitleElement.textContent = data.name;
+  }
+
+  const cardLikeButtonElement = cardElement.querySelector(".card__like-button");
+  if (cardLikeButtonElement) {
+    cardLikeButtonElement.addEventListener("click", () => {
+      cardLikeButtonElement.classList.toggle("card__like-button_active");
+    });
+  }
+
+  const cardDeleteButtonElement = cardElement.querySelector(
+    ".card__delete-button"
+  );
+  cardDeleteButtonElement.addEventListener("click", () => {
+    cardElement.remove();
+    cardElement = null;
+  });
+
+  return cardElement;
+}
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
@@ -92,32 +128,33 @@ function handleProfileFormSubmit(evt) {
   editProfileModal.classList.remove("modal_is-opened");
 }
 
-// Listen for changes in the "name" input
-newPostNameInput.addEventListener("change", (event) => {
-  postTitle = event.target.value.trim();
-  console.log("Post title updated:", postTitle);
-});
-
-// Listen for changes in the "link/image" input
-newPostLinkInput.addEventListener("change", (event) => {
-  postImageUrl = event.target.value.trim();
-  console.log("Post image URL updated:", postImageUrl);
-});
+// We'll read the input values directly in the submit handler below.
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  console.log(postTitle);
-  console.log(postImageUrl);
-  initialCards.push({
-    name: postTitle,
-    link: postImageUrl,
-  });
+
+  const caption = newPostNameInput.value;
+  const link = newPostLinkInput.value;
+
+  console.log(caption);
+  console.log(link);
+
+  const cardElement = getCardElement({ name: caption, link: link });
+  if (cardsList && cardElement) {
+    // Insert the new card as the first element in the list
+    cardsList.prepend(cardElement);
+  }
+
+  initialCards.push({ name: caption, link: link });
+
+  closeModal(newPostModal);
+  newPostFormEl.reset();
 }
 
 editProfileFormEl.addEventListener("submit", handleProfileFormSubmit);
 newPostFormEl.addEventListener("submit", handleAddCardSubmit);
 
-initialCards.forEach(function (card) {
-  console.log(card.name);
-  console.log(card.link);
+initialCards.forEach(function (item) {
+  const cardElement = getCardElement(item);
+  cardsList.append(cardElement);
 });

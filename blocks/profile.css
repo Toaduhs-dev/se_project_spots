@@ -4,8 +4,7 @@
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
-.profile > .profile__add-button,
-.profile > .profile__new-post-btn {
+.profile > .profile__add-button {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -55,8 +54,7 @@
   letter-spacing: 0%;
 }
 
-.profile__edit-button,
-.profile__edit-btn {
+.profile__edit-button {
   background-color: #fcf5e5;
   border: none;
   text-align: left;
@@ -96,9 +94,7 @@
 }
 /*AI Solution for making the text centered inside the button*/
 .profile__add-button img,
-.profile__new-post-btn img,
-.profile__add-button svg,
-.profile__new-post-btn svg {
+.profile__add-button svg {
   width: 16px;
   height: 16px;
   display: block;
@@ -133,16 +129,14 @@
   .profile__column {
     margin: 0 0 20px;
   }
-  .profile__edit-button,
-  .profile__edit-btn {
+  .profile__edit-button {
     margin-left: 0;
     align-self: center;
     display: inline-flex;
     justify-content: center;
   }
 
-  .profile__add-button,
-  .profile__new-post-btn {
+  .profile__add-button {
     margin-left: 0;
 
     align-self: stretch;
@@ -154,8 +148,7 @@
   }
 
   /* Mobile-specific tweaks for the edit button */
-  .profile__edit-button,
-  .profile__edit-btn {
+  .profile__edit-button {
     width: 84px;
     font-size: 16px;
     line-height: 16px; /* text height of 16px */
