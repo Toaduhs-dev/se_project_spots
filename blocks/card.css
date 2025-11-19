@@ -39,15 +39,20 @@
   right: 10px;
   border: none;
   background-color: rgba(0, 0, 0, 0.3);
-  background-image: url(../images/deletedefault.svg);
+  background-image: url(../images/delete-icon.svg);
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .card__delete-button:hover {
   background-image: url(../images/delete.svg);
+  background-repeat: no-repeat;
 }
 
 .card__like-button {
   background-image: url(../images/LikeButton.svg);
+  background-repeat: no-repeat;
   width: 23px;
   height: 20px;
   border: none;
@@ -57,6 +62,7 @@
 
 .card__like-button_active {
   background-image: url(../images/liked.svg);
+  background-repeat: no-repeat;
   opacity: 1;
 }
 

@@ -47,6 +47,24 @@
   border: none;
   background-image: url(../images/Close\ Icon.svg);
 }
+.modal__close {
+  background-image: url(../images/DeleteWhite.svg);
+}
+
+.modal__close-button__close_type_preview {
+  position: absolute;
+  top: 0px;
+  right: -50px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  opacity: 1;
+  background-repeat: no-repeat;
+}
+
+/*Set Up close preview Button*/
 
 .modal__submit-button {
   width: 156px;
@@ -78,6 +96,24 @@
 
 .modal__label {
   margin: 0 0 32px;
+}
+
+.modal__image-container {
+  position: relative;
+}
+
+.modal__image {
+  max-width: 80vw;
+  max-height: 80vw;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+
+.modal__caption {
+  /*Add Styles here*/
+  color: white;
 }
 
 .modal__input {
