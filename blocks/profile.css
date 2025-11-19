@@ -100,6 +100,14 @@
   display: block;
 }
 
+.profile__edit-button:hover {
+  color: rgba(33, 33, 33, 0.5) !important;
+}
+
+.profile__add-button:hover {
+  background-color: rgba(33, 33, 33, 0.8) !important;
+}
+
 @media screen and (max-width: 627px) {
   .profile {
     flex-direction: column;
@@ -147,19 +155,25 @@
     box-sizing: border-box;
   }
 
-  /* Mobile-specific tweaks for the edit button */
+  .profile__add-button:hover {
+    background-color: rgba(33, 33, 33, 0.8) !important;
+  }
+
+  .profile__edit-button:hover {
+    color: rgba(33, 33, 33, 0.8) !important;
+  }
+
   .profile__edit-button {
     width: 84px;
     font-size: 16px;
-    line-height: 16px; /* text height of 16px */
-    margin-top: 8px; /* move the edit button down slightly */
-    padding: 8px 0; /* slightly more vertical padding so icon/text are not clipped */
-    white-space: nowrap; /* keep text on a single line */
-    /* remove overflow:hidden to avoid clipping the icon; keep nowrap so text doesn't wrap */
-    align-items: center; /* vertically center the button content */
+    line-height: 16px;
+    margin-top: 8px;
+    padding: 8px 0;
+    white-space: nowrap;
+
+    align-items: center;
   }
 
-  /* Ensure edit-button icon matches the 16px text size */
   .profile__edit-button img,
   .profile__edit-button svg {
     width: 16px;

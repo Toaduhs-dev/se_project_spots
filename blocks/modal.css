@@ -11,6 +11,8 @@
   justify-content: center;
   align-items: center;
   transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+  z-index: 1000;
+  overflow: auto; /* Allow scrolling if needed */
 }
 
 .modal_is-opened {
@@ -20,7 +22,6 @@
 }
 
 .modal_is-opened .modal__container {
-  /* reset the small initial offset/scale so the box animates into place */
   transform: none;
   opacity: 1;
 }
@@ -46,25 +47,66 @@
   background-color: #fff;
   border: none;
   background-image: url(../images/Close\ Icon.svg);
+  cursor: pointer;
 }
+
+.modal__close-button:hover {
+  opacity: 0.8;
+}
+
 .modal__close {
   background-image: url(../images/DeleteWhite.svg);
 }
 
 .modal__close-button__close_type_preview {
   position: absolute;
-  top: 0px;
-  right: -50px;
+  top: 10px;
+  right: 10px;
   width: 40px;
   height: 40px;
-  border: none;
-  background-color: transparent;
+  border: 1px solid #a0a0ff; /* Light purple border for default */
+  background-color: #fff; /* White background for default */
+  border-radius: 8px;
   color: white;
   opacity: 1;
   background-repeat: no-repeat;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.modal__close-button__close_type_preview:hover {
+  background-color: #000; /* Black background on hover */
+  border-color: #4040a0; /* Dark purple border on hover */
 }
 
 /*Set Up close preview Button*/
+
+.modal__close-button__close_type_preview::before,
+.modal__close-button__close_type_preview::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: #808080; /* Light gray for default X */
+  transition: background-color 0.3s;
+}
+
+.modal__close-button__close_type_preview:hover::before,
+.modal__close-button__close_type_preview:hover::after {
+  background-color: #fff; /* White X on hover */
+}
+
+.modal__close-button__close_type_preview::before {
+  transform: rotate(45deg);
+}
+
+.modal__close-button__close_type_preview::after {
+  transform: rotate(-45deg);
+}
 
 .modal__submit-button {
   width: 156px;
@@ -79,6 +121,11 @@
   font-size: 16px;
   line-height: 100%;
   letter-spacing: 0%;
+  cursor: pointer;
+}
+
+.modal__submit-button:hover {
+  background-color: rgba(33, 33, 33, 0.8);
 }
 
 .modal__title {
@@ -100,20 +147,44 @@
 
 .modal__image-container {
   position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  text-align: center;
+  padding: 0;
+  background-color: transparent; /* Remove white background */
+  border-radius: 0; /* Remove rounded corners if contributing to border */
 }
 
 .modal__image {
-  max-width: 80vw;
-  max-height: 80vw;
-  width: 100%;
-  object-fit: contain;
+  max-width: 100%;
+  max-height: 80vh; /* Ensures it fits vertically */
+  height: auto;
+  object-fit: contain; /* Maintains aspect ratio without stretching */
   display: block;
-  border-radius: 8px;
+  border-radius: 0; /* Remove any border radius */
+  border: none; /* Ensure no border */
 }
 
 .modal__caption {
-  /*Add Styles here*/
-  color: white;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  height: fit-content;
+  position: relative; /* Change to relative for flow below image */
+  bottom: auto;
+  left: auto;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background-color: rgba(33, 33, 33, 1);
+  color: #fff;
+  margin-top: 10px; /* Space below the image */
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  z-index: 5;
 }
 
 .modal__input {
@@ -122,14 +193,14 @@
   width: 630px;
   padding: 16px 12px;
   border-radius: 8px;
-  border-color: rgba(33, 33, 33, 0.4);
+  border: 1px solid rgba(33, 33, 33, 0.4);
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: medium;
-  size: 20px;
+  font-style: normal;
+  font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
-  gap: 10px;
+  cursor: pointer;
 }
 
 .modal__input::placeholder {

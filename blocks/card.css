@@ -43,6 +43,7 @@
   border-radius: 50%;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 
 .card__delete-button:hover {
@@ -58,6 +59,7 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
+  cursor: pointer;
 }
 
 .card__like-button_active {
