@@ -12,9 +12,13 @@
   border-radius: 8px;
 }
 
+.card__image:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 .card__title {
-  width: 190px;
-  height: 24px;
+  max-width: 353px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   color: #212121;
   font-weight: 500;
@@ -58,7 +62,7 @@
   height: 20px;
   border: none;
   background-color: transparent;
-  opacity: 40%;
+  opacity: 0.4;
   cursor: pointer;
 }
 

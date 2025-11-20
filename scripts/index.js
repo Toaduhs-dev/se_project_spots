@@ -58,7 +58,8 @@ const profileNameEl = document.querySelector(".profile__name");
 const profileAboutEl = document.querySelector(".profile__about");
 
 const previewModal = document.querySelector("#preview-modal");
-const previewModalCloseButton = previewModal.querySelector(".modal__close");
+const previewModalCloseButton =
+  previewModal.querySelector(".modalclose-button");
 const previewImageElement = previewModal.querySelector(".modal__image");
 const previewCaptionElement = previewModal.querySelector(".modal__caption");
 
@@ -94,7 +95,6 @@ function getCardElement(data) {
   );
   cardDeleteButtonElement.addEventListener("click", () => {
     cardElement.remove();
-    cardElement = null;
   });
 
   cardImageElement.addEventListener("click", () => {
@@ -122,17 +122,14 @@ editProfileBtn.addEventListener("click", function () {
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
-  //editProfileModal.classList.remove("modal_is-opened");
   closeModal(editProfileModal);
 });
 
 newPostBtn.addEventListener("click", function () {
-  //newPostModal.classList.add("modal_is-opened");
   openModal(newPostModal);
 });
 
 newPostCloseBtn.addEventListener("click", function () {
-  //newPostModal.classList.remove("modal_is-opened");
   closeModal(newPostModal);
 });
 
@@ -146,7 +143,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileAboutEl.textContent = editProfileDescriptionInput.value;
-  editProfileModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 }
 
 // We'll read the input values directly in the submit handler below.

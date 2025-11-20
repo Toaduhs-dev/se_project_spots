@@ -33,7 +33,6 @@
   background-color: #fff;
   padding: 32px 50px;
   position: relative;
-  padding: 10px;
   transform: translateY(-8px) scale(0.98);
   transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.25s ease;
 }
@@ -58,13 +57,12 @@
   background-image: url(../images/DeleteWhite.svg);
 }
 
-.modal__close-button__close_type_preview {
+.modalclose-button.modalclose-button_type_preview {
   position: absolute;
   top: 10px;
   right: 10px;
   width: 40px;
   height: 40px;
-  border: 1px solid #a0a0ff; /* Light purple border for default */
   background-color: #fff; /* White background for default */
   border-radius: 8px;
   color: white;
@@ -78,15 +76,15 @@
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-.modal__close-button__close_type_preview:hover {
+.modalclose-button.modalclose-button_type_preview:hover {
   background-color: #000; /* Black background on hover */
   border-color: #4040a0; /* Dark purple border on hover */
 }
 
 /*Set Up close preview Button*/
 
-.modal__close-button__close_type_preview::before,
-.modal__close-button__close_type_preview::after {
+.modalclose-button.modalclose-button_type_preview::before,
+.modalclose-button.modalclose-button_type_preview::after {
   content: "";
   position: absolute;
   width: 24px;
@@ -95,16 +93,16 @@
   transition: background-color 0.3s;
 }
 
-.modal__close-button__close_type_preview:hover::before,
-.modal__close-button__close_type_preview:hover::after {
+.modalclose-button.modalclose-button_type_preview:hover::before,
+.modalclose-button.modalclose-button_type_preview::after {
   background-color: #fff; /* White X on hover */
 }
 
-.modal__close-button__close_type_preview::before {
+.modalclose-button.modalclose-button_type_preview:before {
   transform: rotate(45deg);
 }
 
-.modal__close-button__close_type_preview::after {
+.modalclose-button.modalclose-button_type_preview::after {
   transform: rotate(-45deg);
 }
 
@@ -190,7 +188,8 @@
 .modal__input {
   display: block;
   margin: 8px 0 0;
-  width: 630px;
+  width: 100%;
+  box-sizing: border-box;
   padding: 16px 12px;
   border-radius: 8px;
   border: 1px solid rgba(33, 33, 33, 0.4);
@@ -204,7 +203,6 @@
 }
 
 .modal__input::placeholder {
-  color: #2121214d;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 20px;
@@ -212,7 +210,7 @@
   color: rgba(33, 33, 33, 0.3);
 }
 
-@media screen and (max-width: 677px) {
+@media screen and (max-width: 627px) {
   .modal__container {
     width: 300px;
     top: 134px;
