@@ -12,7 +12,7 @@
   align-items: center;
   transition: opacity 0.25s ease, visibility 0s linear 0.25s;
   z-index: 1000;
-  overflow: auto; /* Allow scrolling if needed */
+  overflow: auto;
 }
 
 .modal_is-opened {
@@ -30,11 +30,11 @@
   max-width: 730px;
   width: 100%;
   border-radius: 8px;
-  background-color: #fff;
   padding: 32px 50px;
   position: relative;
   transform: translateY(-8px) scale(0.98);
   transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.25s ease;
+  background-color: white;
 }
 
 .modal__close-button {
@@ -43,59 +43,39 @@
   height: 40px;
   top: 32px;
   right: 50px;
-  background-color: #fff;
   border: none;
-  background-image: url(../images/Close\ Icon.svg);
+  background-image: url(../images/DEFAULTHOVEr.svg);
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .modal__close-button:hover {
   opacity: 0.8;
-}
-
-.modal__close {
-  background-image: url(../images/DeleteWhite.svg);
+  background-image: url(../images/DEFAULTBLACKHOVER.svg);
 }
 
 .modalclose-button.modalclose-button_type_preview {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: -35px;
   width: 40px;
   height: 40px;
-  background-color: #fff; /* White background for default */
-  border-radius: 8px;
-  color: white;
   opacity: 1;
-  background-repeat: no-repeat;
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s, border-color 0.3s;
+  border: 9;
+  background: transparent;
+  border: none;
+  background-image: url(../images/DeleteWhite.svg);
 }
 
 .modalclose-button.modalclose-button_type_preview:hover {
-  background-color: #000; /* Black background on hover */
-  border-color: #4040a0; /* Dark purple border on hover */
-}
-
-/*Set Up close preview Button*/
-
-.modalclose-button.modalclose-button_type_preview::before,
-.modalclose-button.modalclose-button_type_preview::after {
-  content: "";
-  position: absolute;
-  width: 24px;
-  height: 2px;
-  background-color: #808080; /* Light gray for default X */
-  transition: background-color 0.3s;
-}
-
-.modalclose-button.modalclose-button_type_preview:hover::before,
-.modalclose-button.modalclose-button_type_preview::after {
-  background-color: #fff; /* White X on hover */
+  background-color: transparent;
+  background-image: url(../images/blackdeletehover.svg);
 }
 
 .modalclose-button.modalclose-button_type_preview:before {
@@ -139,18 +119,14 @@
   flex-direction: column;
 }
 
-.modal__label {
-  margin: 0 0 32px;
-}
-
 .modal__image-container {
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
   text-align: center;
   padding: 0;
-  background-color: transparent; /* Remove white background */
-  border-radius: 0; /* Remove rounded corners if contributing to border */
+  background-color: transparent;
+  border-radius: 0;
 }
 
 .modal__image {
@@ -163,6 +139,12 @@
   border: none; /* Ensure no border */
 }
 
+.modal__error {
+  display: block;
+  margin-top: 8px;
+  color: red;
+}
+
 .modal__caption {
   display: flex;
   flex-flow: row nowrap;
@@ -170,14 +152,14 @@
   justify-content: space-between;
   width: fit-content;
   height: fit-content;
-  position: relative; /* Change to relative for flow below image */
+  position: relative;
   bottom: auto;
   left: auto;
   border-radius: 8px;
   padding: 4px 8px;
   background-color: rgba(33, 33, 33, 1);
   color: #fff;
-  margin-top: 10px; /* Space below the image */
+  margin-top: 10px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -198,8 +180,11 @@
   font-style: normal;
   font-size: 20px;
   line-height: 100%;
-  letter-spacing: 0%;
   cursor: pointer;
+}
+
+.modal__input_state_error {
+  border: 1px solid rgba(255, 0, 0), 0.6;
 }
 
 .modal__input::placeholder {

@@ -146,8 +146,6 @@ function handleProfileFormSubmit(evt) {
   closeModal(editProfileModal);
 }
 
-// We'll read the input values directly in the submit handler below.
-
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
 
@@ -158,12 +156,15 @@ function handleAddCardSubmit(evt) {
   console.log(link);
 
   const cardElement = getCardElement({ name: caption, link: link });
+
+  if (hasInvalidInput([newPostNameInput, newPostLinkInput])) {
+    {
+      return;
+    }
+  }
   if (cardsList && cardElement) {
-    // Insert the new card as the first element in the list
     cardsList.prepend(cardElement);
   }
-
-  initialCards.push({ name: caption, link: link });
 
   closeModal(newPostModal);
   newPostFormEl.reset();
