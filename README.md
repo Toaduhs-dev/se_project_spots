@@ -25,7 +25,7 @@ There are Seven images inside the project all these photos were provided.
 
 - Part 1 Sprint 3: https://drive.google.com/file/d/1xkGSJ72eD6PpOzN1LAPV54Cry-JLU1uY/view?usp=sharing
 
-- Part 2 Sprint 7:
+- Part 2 Sprint 7:https://drive.google.com/file/d/1IxzH4Ic6jg15bkQGZT4_-wrQ3mG4dKYh/view?usp=sharing
 
 A video explination of the Sprint 3 parts as required by the syllabus.
 
