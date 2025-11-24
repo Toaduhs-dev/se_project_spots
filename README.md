@@ -22,9 +22,14 @@ This project is made so all the elements are displayed correctly on popular scre
 There are Seven images inside the project all these photos were provided.
 
 **Video Explination**
-https://drive.google.com/file/d/1xkGSJ72eD6PpOzN1LAPV54Cry-JLU1uY/view?usp=sharing
+
+- Part 1 Sprint 3: https://drive.google.com/file/d/1xkGSJ72eD6PpOzN1LAPV54Cry-JLU1uY/view?usp=sharing
+
+- Part 2 Sprint 7:
 
 A video explination of the Sprint 3 parts as required by the syllabus.
+
+A video explination of Sprint 7 and how JavaScript files were used to affect the website and its functionality.
 
 **Git-Hub Pages Link** https://toaduhs-dev.github.io/se_project_spots/
 
