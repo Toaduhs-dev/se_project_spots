@@ -36,7 +36,6 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonEL) => {
   if (hasInvalidInput(inputList)) {
     buttonEL.disabled = true;
-    //Add a Modifier class to buttonEL to make it Grey
   } else {
     buttonEL.disabled = false;
     buttonEL.classList.remove(config.submitButtonSelector);
