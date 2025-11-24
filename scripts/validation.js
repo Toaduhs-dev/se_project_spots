@@ -1,13 +1,22 @@
+const settings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-button",
+  inactiveButtonClass: ".modal__submit-button-disabled",
+  inputErrorClass: ".modal__input_state_error",
+  errorClass: ".modal__error",
+};
+
 const showInputError = (formEl, inputEl, errorMsg) => {
   const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorMsgEl.textContent = errorMsg;
-  inputEl.classList.add("modal__input_state_error");
+  inputEl.classList.add(config.inputErrorClass);
 };
 
 const hideInputError = (formEl, inputEl) => {
   const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorMsgEl.textContent = "";
-  inputEl.classList.remove("modal__input_state_error");
+  inputEl.classList.remove(config.inputErrorClass);
 };
 
 const checkInputValidity = (formEl, inputEl) => {
@@ -28,33 +37,35 @@ const toggleButtonState = (inputList, buttonEL) => {
   if (hasInvalidInput(inputList)) {
     buttonEL.disabled = true;
     //Add a Modifier class to buttonEL to make it Grey
-    // Do CSS too
   } else {
     buttonEL.disabled = false;
-    buttonEL.classList.remove("modal__submit-button-disabled");
+    buttonEL.classList.remove(config.submitButtonSelector);
   }
 };
 
-const setEventListeners = (formEl) => {
-  const inputList = Array.from(formEl.querySelectorAll(".modal__input"));
-  const buttonEL = formEl.querySelector(".modal__submit-button");
+const resetValidation = (formEl, inputList) => {
+  inputList.forEach((input) => {
+    hideInputError(formEl, input);
+  });
+};
+//!Issue!: Not resetting the EditProfile Modal correctly when passed??
 
-  //Todo-Handel initial states
-  //toggleButtonState(inputList, buttonEL);
+const setEventListeners = (formEl, config) => {
+  const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
+  const buttonEL = formEl.querySelector(config.submitButtonSelector);
 
   inputList.forEach((inputEl) => {
     inputEl.addEventListener("input", function () {
       checkInputValidity(formEl, inputEl);
-      //toggleButtonState(inputList, buttonEL);
     });
   });
 };
 
-const enableValidation = () => {
-  const formList = document.querySelectorAll(".modal__form");
+const enableValidation = (config) => {
+  const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formEl) => {
-    setEventListeners(formEl);
+    setEventListeners(formEl, config);
   });
 };
 
-enableValidation();
+enableValidation(settings);

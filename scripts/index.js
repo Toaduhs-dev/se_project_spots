@@ -148,10 +148,8 @@ function handleProfileFormSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-
   const caption = newPostNameInput.value;
   const link = newPostLinkInput.value;
-
   console.log(caption);
   console.log(link);
 
