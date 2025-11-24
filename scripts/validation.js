@@ -1,21 +1,25 @@
 const settings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__submit-button",
-  inactiveButtonClass: ".modal__submit-button-disabled",
-  inputErrorClass: ".modal__input_state_error",
-  errorClass: ".modal__error",
+  formSelector: "modal__form",
+  inputSelector: "modal__input",
+  submitButtonSelector: "modal__submit-button",
+  inactiveButtonClass: "modal__submit-button-disabled",
+  inputErrorClass: "modal__input_state_error",
+  errorClass: "modal__error",
 };
 
 const showInputError = (formEl, inputEl, errorMsg) => {
   const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorMsgEl.textContent = errorMsg;
+  errorMsgEl.classList.add(config.errorClass);
+  errorMsgEl.classList.add(".modal__error_visable");
   inputEl.classList.add(config.inputErrorClass);
 };
 
 const hideInputError = (formEl, inputEl) => {
   const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorMsgEl.textContent = "";
+  errorMsgEl.classList.remove(config.errorClass);
+  errorMsgEl.classList.remove(".modal__error_visable");
   inputEl.classList.remove(config.inputErrorClass);
 };
 
@@ -36,15 +40,18 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonEL) => {
   if (hasInvalidInput(inputList)) {
     buttonEL.disabled = true;
+    buttonEL.classList.add(config.inactiveButtonClass);
   } else {
     buttonEL.disabled = false;
-    buttonEL.classList.remove(config.submitButtonSelector);
+    buttonEL.classList.remove(config.inactiveButtonClass);
+    buttonEL.classList.add(config.inactiveButtonClass);
+    toggleButtonState(inputList, buttonEL, config);
   }
 };
 
-const resetValidation = (formEl, inputList) => {
+const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((input) => {
-    hideInputError(formEl, input);
+    hideInputError(formEl, input, config);
   });
 };
 //!Issue!: Not resetting the EditProfile Modal correctly when passed??

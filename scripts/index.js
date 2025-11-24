@@ -140,6 +140,9 @@ previewModalCloseButton.addEventListener("click", function () {
 const editProfileFormEl = editProfileModal.querySelector(".modal__form");
 
 function handleProfileFormSubmit(evt) {
+  if (!editProfileFormEl.checkValidity()) {
+    return;
+  }
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileAboutEl.textContent = editProfileDescriptionInput.value;

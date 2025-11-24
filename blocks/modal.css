@@ -67,9 +67,8 @@
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s, border-color 0.3s;
-  border: 9;
   background: transparent;
-  border: none;
+  border: 9;
   background-image: url(../images/DeleteWhite.svg);
 }
 
@@ -98,12 +97,18 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 100%;
-  letter-spacing: 0%;
+  letter-spacing: normal;
   cursor: pointer;
+  margin: 15px -2px;
 }
 
 .modal__submit-button:hover {
   background-color: rgba(33, 33, 33, 0.8);
+  background-color: grey;
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  /*I think this should fix the button when its disabled being weird*/
 }
 
 .modal__title {
@@ -140,9 +145,13 @@
 }
 
 .modal__error {
-  display: block;
+  display: none;
   margin-top: 8px;
   color: red;
+}
+
+.modal__error_visable {
+  display: block;
 }
 
 .modal__caption {
@@ -184,7 +193,7 @@
 }
 
 .modal__input_state_error {
-  border: 1px solid rgba(255, 0, 0), 0.6;
+  border: 1px solid rgba(255, 0, 0, 0.6);
 }
 
 .modal__input::placeholder {
