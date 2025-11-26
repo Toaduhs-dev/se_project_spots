@@ -5,18 +5,18 @@
 }
 
 .profile > .profile__add-button {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 149px !important;
-  height: 52px !important;
-  background-color: #212121 !important;
-  color: #fff !important;
-  border-radius: 8px !important;
-  border: none !important;
-  padding: 0 16px !important;
-  margin-left: auto !important;
-  align-self: flex-end !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 149px;
+  height: 52px;
+  background-color: #212121;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 0 16px;
+  margin-left: auto;
+  align-self: flex-end;
 }
 
 .profile__image {
@@ -71,8 +71,8 @@
   box-sizing: border-box;
   width: 149px;
   height: 52px;
-  background-color: #212121 !important;
-  color: #fff !important;
+  background-color: #212121;
+  color: #fff;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -89,8 +89,8 @@
   align-self: flex-end;
   overflow: visible;
   cursor: pointer;
-  border: none !important;
-  padding: 0 16px !important;
+  border: none;
+  padding: 0 16px;
 }
 /*AI Solution for making the text centered inside the button*/
 .profile__add-button img,

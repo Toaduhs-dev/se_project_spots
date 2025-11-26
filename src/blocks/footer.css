@@ -13,6 +13,7 @@
   letter-spacing: 0;
   color: #212121;
   opacity: 1;
+  text-align: center;
 }
 
 @media screen and (max-width: 627px) {

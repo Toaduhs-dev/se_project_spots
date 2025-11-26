@@ -12,7 +12,6 @@
       name="keywords"
       content="Image Sharing, HTML, CSS, VSCode, Social Media"
     />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Spots</title>
   </head>
@@ -59,7 +58,7 @@
       </footer>
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
-          <button class="modal__close-button"></button>
+          <button class="modal__close-button" type="button"></button>
           <h2 class="modal__title">Edit Profile</h2>
           <form class="modal__form" id="edit-profile-form" novalidate>
             <label for="profile-name-input" class="modal__label">
@@ -139,14 +138,12 @@
       <div class="modal__image-container">
         <button
           aria-label="Close modal"
-          class="modalclose-button modalclose-button_type_preview"
+          class="modal__close-button modal__close-button_type_preview"
           type="button"
         ></button>
         <img src="#" alt="" class="modal__image" />
         <p class="modal__caption"></p>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validation.js"></script>
   </body>
 </html>

@@ -1,3 +1,11 @@
+import "../pages/index.css";
+import "../scripts/validation.js";
+import {
+  enableValidation,
+  validationConfig,
+  resetValidation,
+} from "../scripts/validation.js";
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -58,8 +66,9 @@ const profileNameEl = document.querySelector(".profile__name");
 const profileAboutEl = document.querySelector(".profile__about");
 
 const previewModal = document.querySelector("#preview-modal");
-const previewModalCloseButton =
-  previewModal.querySelector(".modalclose-button");
+const previewModalCloseButton = previewModal.querySelector(
+  ".modal__close-button"
+);
 const previewImageElement = previewModal.querySelector(".modal__image");
 const previewCaptionElement = previewModal.querySelector(".modal__caption");
 
@@ -118,11 +127,21 @@ function closeModal(modal) {
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileAboutEl.textContent;
+  resetValidation(
+    editProfileFormEl,
+    Array.from(editProfileFormEl.querySelectorAll(".modal__input")),
+    validationConfig
+  );
   openModal(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
+  resetValidation(
+    newPostFormEl,
+    Array.from(newPostFormEl.querySelectorAll(".modal__input")),
+    validationConfig
+  );
 });
 
 newPostBtn.addEventListener("click", function () {
@@ -144,6 +163,8 @@ function handleProfileFormSubmit(evt) {
     return;
   }
   evt.preventDefault();
+  editProfileNameInput.value === profileNameEl.textContent;
+  editProfileDescriptionInput.value === profileAboutEl.textContent;
   profileNameEl.textContent = editProfileNameInput.value;
   profileAboutEl.textContent = editProfileDescriptionInput.value;
   closeModal(editProfileModal);
@@ -159,9 +180,7 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement({ name: caption, link: link });
 
   if (hasInvalidInput([newPostNameInput, newPostLinkInput])) {
-    {
-      return;
-    }
+    return;
   }
   if (cardsList && cardElement) {
     cardsList.prepend(cardElement);
@@ -169,6 +188,11 @@ function handleAddCardSubmit(evt) {
 
   closeModal(newPostModal);
   newPostFormEl.reset();
+  resetValidation(
+    newPostFormEl,
+    Array.from(newPostFormEl.querySelectorAll(".modal__input")),
+    validationConfig
+  );
 }
 
 editProfileFormEl.addEventListener("submit", handleProfileFormSubmit);
@@ -178,3 +202,5 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+enableValidation(validationConfig);
