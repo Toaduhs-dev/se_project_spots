@@ -4,6 +4,7 @@ import {
   enableValidation,
   validationConfig,
   resetValidation,
+  hasInvalidInput,
 } from "../scripts/validation.js";
 
 const initialCards = [

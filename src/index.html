@@ -12,18 +12,21 @@
       name="keywords"
       content="Image Sharing, HTML, CSS, VSCode, Social Media"
     />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Spots</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img src="./images/Logo.svg" alt="Spots Logo" class="header__logo" />
+        <img
+          src="<%= require('./images/Logo.svg') %>"
+          alt="Spots Logo"
+          class="header__logo"
+        />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/avatar.jpg"
+            src="<%= require('./images/avatar.jpg') %>"
             alt="Users Image"
             class="profile__image"
           />
@@ -31,11 +34,16 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__about">Civil Aviator</p>
             <button type="button" class="profile__edit-button">
-              <img src="./images/EditPen.svg" alt="Pen Icon" /> Edit Profile
+              <img
+                src="<%= require('./images/EditPen.svg') %>"
+                alt="Pen Icon"
+              />
+              Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-button">
-            <img src="./images/Plus.svg" alt="Plus Icon" /> New Post
+            <img src="<%= require('./images/Plus.svg') %>" alt="Plus Icon" />
+            New Post
           </button>
         </section>
         <section class="cards page__section">

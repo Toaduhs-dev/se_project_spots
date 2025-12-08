@@ -47,14 +47,25 @@ export default {
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|webp|gif|woff(2)?|eot|ttf|otf)$/,
+        test: /\.(png|svg|jpg|jpeg|webp|gif|woff(2)?|eot|ttf|otf|ico)$/,
         type: "asset/resource",
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader",
+        exclude: path.resolve(__dirname, "src/index.html"),
+        options: {
+          sources: {
+            list: ["..."],
+          },
+        },
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+      minify: false,
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),

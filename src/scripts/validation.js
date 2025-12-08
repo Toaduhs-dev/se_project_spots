@@ -36,7 +36,7 @@ const checkInputValidity = (formEl, inputEl, validationConfig) => {
   }
 };
 
-const hasInvalidInput = (inputList) => {
+export const hasInvalidInput = (inputList) => {
   return inputList.some((input) => {
     return !input.validity.valid;
   });
