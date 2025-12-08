@@ -57,7 +57,6 @@ export const resetValidation = (formEl, inputList, validationConfig) => {
     hideInputError(formEl, input, validationConfig);
   });
 };
-//!Issue!: Not resetting the EditProfile Modal correctly when passed??
 
 const setEventListeners = (formEl, validationConfig) => {
   const inputList = Array.from(

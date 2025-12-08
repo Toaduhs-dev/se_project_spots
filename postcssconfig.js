@@ -9,3 +9,5 @@ module.exports = {
     cssnano({ preset: "default" }), // set default minification settings
   ],
 };
+
+//Provided by Tutor
