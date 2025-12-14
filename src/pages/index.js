@@ -37,6 +37,7 @@ const newPostCloseBtn = newPostModal.querySelector(".modal__close-button");
 const newPostFormEl = newPostModal.querySelector(".modal__form");
 const newPostNameInput = newPostModal.querySelector("#card-caption-input");
 const newPostLinkInput = newPostModal.querySelector("#card-image-input");
+const editProfileFormEl = editProfileModal.querySelector("#edit-profile-form");
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileAboutEl = document.querySelector(".profile__about");
@@ -96,17 +97,17 @@ function getCardElement(data) {
     ".card__delete-button"
   );
   cardDeleteButtonElement.addEventListener("click", (evt) => {
+    currentSelectorCard = evt.target.closest(".card");
     openDeleteModal(evt);
   });
 
   const openDeleteModal = (evt) => {
-    evt.target.closest(".card").remove();
     openModal(deleteModal);
   };
 
   deleteForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
-    evt.target.closest(".card").remove();
+    currentSelectorCard?.remove();
     closeModal(deleteModal);
     currentSelectorCard = null;
   });
@@ -130,14 +131,27 @@ function closeModal(modal) {
 }
 
 editProfileBtn.addEventListener("click", function () {
-  editProfileNameInput.value = profileNameEl.textContent;
-  editProfileDescriptionInput.value = profileAboutEl.textContent;
+  profileNameEl.value = editProfileNameInput.textContent;
+  profileAboutEl.value = editProfileDescriptionInput.textContent;
+  console.log(profileNameEl.value);
+  console.log(profileAboutEl.value);
   resetValidation(
     editProfileFormEl,
     Array.from(editProfileFormEl.querySelectorAll(".modal__input")),
     validationConfig
   );
+
   openModal(editProfileModal);
+});
+
+editProfileFormEl.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  api
+    .editUserInfo({
+      name: editProfileNameInput.textContent,
+      about: editProfileDescriptionInput.textContent,
+    })
+    .then((res) => console.log("we made it!"));
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
@@ -147,6 +161,10 @@ editProfileCloseBtn.addEventListener("click", function () {
     Array.from(newPostFormEl.querySelectorAll(".modal__input")),
     validationConfig
   );
+});
+
+modalCancelButton.addEventListener("click", function () {
+  closeModal(deleteModal);
 });
 
 newPostBtn.addEventListener("click", function () {
@@ -169,23 +187,17 @@ avatarModalCloseButton.addEventListener("click", () => {
   closeModal(avatarModal);
 });
 
-//Need to add Delete Card event?
-//Need Liking cards
-//Need Loading text
-//Need Pull Request Demo
-//Add Styling
-
-const editProfileFormEl = editProfileModal.querySelector(".modal__form");
-
 function handleProfileFormSubmit(evt) {
   if (!editProfileFormEl.checkValidity()) {
     return;
   }
   evt.preventDefault();
   api
-    .editUserInfo({ name: "test", about: "test" })
+    .editUserInfo({
+      name: editProfileNameInput.textContent,
+      about: editProfileDescriptionInput.textContent,
+    })
     .then((data) => {
-      //Use data argument instead of the input values
       editProfileNameInput.value === profileNameEl.textContent;
       editProfileDescriptionInput.value === profileAboutEl.textContent;
       profileNameEl.textContent = editProfileNameInput.value;
@@ -205,7 +217,10 @@ function handleAddCardSubmit(evt) {
 
   const cardElement = getCardElement({ name: caption, link: link });
   const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", (evt) => openModal(deleteModal));
+  deleteButton.addEventListener("click", (evt) => {
+    currentSelectorCard = evt.target.closest(".card");
+    openModal(deleteModal);
+  });
 
   if (hasInvalidInput([newPostNameInput, newPostLinkInput])) {
     return;
@@ -228,6 +243,7 @@ api
   .then(([cards, userData]) => {
     profileAboutEl.textContent = userData.about;
     profileNameEl.textContent = userData.name;
+    console.log(userData);
     avatarPicture.src = userData.avatar;
     cards.forEach((item) => {
       const cardEl = getCardElement(item);
