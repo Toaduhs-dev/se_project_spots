@@ -29,7 +29,7 @@
             <button class="profile__avatar-btn">
               <img
                 class="profile__pencil-icon"
-                src="<%= require('./images/EditPen.svg')%>"
+                src="<%= require('./images/whitepen.svg')%>"
                 alt="Penicl Icon"
               />
             </button>
@@ -175,7 +175,7 @@
               name="avatar"
               type="url"
               class="modal__input"
-              placeholder="avatar goes gere"
+              placeholder="Paste a Link to the Image"
               required
             />
             <span id="profile-avatar-input-error" class="modal__error"></span>
@@ -191,7 +191,9 @@
           Are you sure you want to delete this image?
         </h2>
         <form class="modal__form" id="delete-form">
-          <button class="modal__submit-button" type="submit">Delete</button>
+          <button class="modal__submit-button modal__delete-btn" type="submit">
+            Delete
+          </button>
           <button
             class="modal__submit-button close__delete-modal"
             type="button"

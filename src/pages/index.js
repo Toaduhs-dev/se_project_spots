@@ -144,16 +144,6 @@ editProfileBtn.addEventListener("click", function () {
   openModal(editProfileModal);
 });
 
-editProfileFormEl.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-  api
-    .editUserInfo({
-      name: editProfileNameInput.textContent,
-      about: editProfileDescriptionInput.textContent,
-    })
-    .then((res) => console.log("we made it!"));
-});
-
 editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
   resetValidation(
@@ -174,6 +164,17 @@ newPostBtn.addEventListener("click", function () {
 avatarModalBtn.addEventListener("click", () => {
   openModal(avatarModal);
 });
+avatarForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  avatarPicture.src = avatarInput.value;
+  api
+    .editUserAvatar({ avatar: avatarInput.value })
+    .then((data) => {
+      console.log("Image Received");
+      closeModal(avatarModal);
+    })
+    .catch((err) => console.log(err));
+});
 
 newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
@@ -188,24 +189,28 @@ avatarModalCloseButton.addEventListener("click", () => {
 });
 
 function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+
   if (!editProfileFormEl.checkValidity()) {
     return;
   }
-  evt.preventDefault();
+
   api
     .editUserInfo({
-      name: editProfileNameInput.textContent,
-      about: editProfileDescriptionInput.textContent,
+      name: editProfileNameInput.value.trim(),
+      about: editProfileDescriptionInput.value.trim(),
     })
     .then((data) => {
-      editProfileNameInput.value === profileNameEl.textContent;
-      editProfileDescriptionInput.value === profileAboutEl.textContent;
-      profileNameEl.textContent = editProfileNameInput.value;
-      profileAboutEl.textContent = editProfileDescriptionInput.value;
+      profileNameEl.textContent = data.name;
+      profileAboutEl.textContent = data.about;
       closeModal(editProfileModal);
     })
-    .catch(console.error);
+    .catch((err) => {
+      console.error("Profile update failed:", err);
+    })
+    .finally(() => console.log("ran"));
 }
+
 closeDeleteModal.addEventListener("click", () => closeModal(deleteModal));
 
 function handleAddCardSubmit(evt) {
