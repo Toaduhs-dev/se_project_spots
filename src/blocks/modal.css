@@ -42,7 +42,7 @@
   width: 40px;
   height: 40px;
   top: 32px;
-  right: 50px;
+  right: 10px;
   border: none;
   background-image: url(../images/DEFAULTHOVEr.svg);
   cursor: pointer;
@@ -116,6 +116,10 @@
   this might fix the issue after I looked up a solution? */
 }
 
+.modal__delete-btn:hover {
+  background-color: red;
+}
+
 .modal__title {
   margin: 0 0 32px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
@@ -127,6 +131,14 @@
 .modal__form {
   display: flex;
   flex-direction: column;
+}
+
+.modal__label {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 110%;
+  letter-spacing: 0%;
 }
 
 .modal__image-container {
